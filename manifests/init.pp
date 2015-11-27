@@ -39,13 +39,13 @@ class puppet-rhnsatellite(
   $password = "password"
 ) {
 
-  # Read by the provider on the machine, to log into RHN and
-  # change subscriptions.
-  file {'/etc/puppet/rhn.conf':
-    owner   => root,
-    group   => root,
-    mode    => 0600,
-    content => template('puppet-rhnsatellite/rhn.conf.erb')
+  # Passing parameters as resource defaults in dynamic scope may stop working
+  # in a future Puppet release. For now it's still better than writing the
+  # password in a file.
+  Satelliterepo {
+    server_url => $server_url,
+    username   => $username,
+    password   => $password,
   }
 
 }

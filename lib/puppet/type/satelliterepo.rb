@@ -9,8 +9,19 @@ Puppet::Type.newtype(:satelliterepo) do
     desc "The name of the channel to subscribe to."
   end
 
-  autorequire(:file) do
-    ['/etc/puppet/rhn.conf']
+  newparam(:server_url) do
+    desc "Usually set through the rhnsatellite class. " +
+      "The XMLRPC interface of your Spacewalk/Satellite/RHN server, " +
+      "for example https://rhn.redhat.com/XMLRPC ."
   end
 
+  newparam(:username) do
+    desc "Usually set through the rhnsatellite class. " +
+      "A valid username for the Satellite server."
+  end
+
+  newparam(:password) do
+    desc "Usually set through the rhnsatellite class. " +
+      "A valid password for the Satellite server."
+  end
 end
