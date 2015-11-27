@@ -34,12 +34,12 @@ Example
 
 Simply include the module into your manifest:
 
-`class {'rhnsatellite':
-  server  => 'https://your.server.here/XMLRPC',
-  username => 'bob',
-  password => 'bob'
-}`
+  class {'rhnsatellite':
+    server_url => 'https://your.server.here/XMLRPC',
+    username   => 'bob',
+    password   => 'bob'
+  }
 
 Now you can subscribe to channels anywhere in that machine's manifest by doing:
 
-`satelliterepo {'some-rhn-channel-label': }`
+  satelliterepo {'some-rhn-channel-label': }
