@@ -2,7 +2,7 @@
 
 require "xmlrpc/client"
 
-Puppet::Type.type(:satelliterepo).provide :satellite, :parent => Puppet::Provider do
+Puppet::Type.type(:satelliterepo).provide(:satellite) do
 
   defaultfor :operatingsystem => :RedHat
 
@@ -93,7 +93,7 @@ Puppet::Type.type(:satelliterepo).provide :satellite, :parent => Puppet::Provide
   end
 
   def read_server_conf
-    {:server => @resource[:server_url], :username => @resource[:username], :password => @resource[:password]}
+    {:server => resource[:server_url], :username => resource[:username], :password => resource[:password]}
   end
 
 end
