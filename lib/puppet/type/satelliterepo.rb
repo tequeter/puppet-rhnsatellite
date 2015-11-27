@@ -24,4 +24,9 @@ Puppet::Type.newtype(:satelliterepo) do
     desc "Usually set through the rhnsatellite class. " +
       "A valid password for the Satellite server."
   end
+
+  # Ensure we are configured first
+  autorequire(:class) do
+    ['rhnsatellite']
+  end
 end
