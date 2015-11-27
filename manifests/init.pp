@@ -1,4 +1,4 @@
-# == Class: puppet-rhnsatellite
+# == Class: rhnsatellite
 #
 # This module contains a provider and type to manage RHN Satellite channels.
 #
@@ -21,7 +21,7 @@
 #
 # === Examples
 #
-#  class { 'puppet-rhnsatellite':
+#  class { 'rhnsatellite':
 #    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
 #  }
 #
@@ -33,7 +33,7 @@
 #
 # Copyright 2012 Andy Sykes, unless otherwise noted.
 #
-class puppet-rhnsatellite(
+class rhnsatellite(
   $server_url  = "https://rhn.redhat.com/XMLRPC",
   $username = "orgadmin",
   $password = "password"

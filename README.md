@@ -1,5 +1,5 @@
-puppet-rhnsatellite
-===================
+rhnsatellite
+============
 
 This is a very simple provider and type that allow you control what channels
 a RHEL machine is subscribed to; these channels can be provided by your local
@@ -34,7 +34,7 @@ Example
 
 Simply include the module into your manifest:
 
-`class {'puppet-rhnsatellite':
+`class {'rhnsatellite':
   server  => 'https://your.server.here/XMLRPC',
   username => 'bob',
   password => 'bob'
@@ -42,4 +42,4 @@ Simply include the module into your manifest:
 
 Now you can subscribe to channels anywhere in that machine's manifest by doing:
 
-`satelliterepo {channel => 'some-rhn-channel-label'}`
+`satelliterepo {'some-rhn-channel-label': }`
