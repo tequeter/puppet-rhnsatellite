@@ -13,16 +13,19 @@ Puppet::Type.newtype(:satelliterepo) do
     desc "Usually set through the rhnsatellite class. " +
       "The XMLRPC interface of your Spacewalk/Satellite/RHN server, " +
       "for example https://rhn.redhat.com/XMLRPC ."
+    isrequired
   end
 
   newparam(:username) do
     desc "Usually set through the rhnsatellite class. " +
       "A valid username for the Satellite server."
+    isrequired
   end
 
   newparam(:password) do
     desc "Usually set through the rhnsatellite class. " +
       "A valid password for the Satellite server."
+    isrequired
   end
 
   # Ensure we are configured first
