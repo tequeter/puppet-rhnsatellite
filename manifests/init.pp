@@ -34,9 +34,9 @@
 # Copyright 2012 Andy Sykes, unless otherwise noted.
 #
 class rhnsatellite(
-  $server_url  = "https://rhn.redhat.com/XMLRPC",
-  $username = "orgadmin",
-  $password = "password"
+  $server_url = "https://rhn.redhat.com/XMLRPC",
+  $username,
+  $password
 ) {
 
   # Passing parameters as resource defaults in dynamic scope may stop working
