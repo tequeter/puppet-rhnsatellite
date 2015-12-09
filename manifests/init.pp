@@ -1,6 +1,7 @@
 # == Class: rhnsatellite
 #
-# This module contains a provider and type to manage RHN Satellite channels.
+# This class sets defaults (server, username, and password) for individual
+# rhnsatellite::channel resources.
 #
 # === Parameters
 #
@@ -15,19 +16,23 @@
 # [*password*]
 #   Password for the above user.
 #
-# [*ssl_cert*]
-#   Name of the SSL certificate your RHN Satellite server will present. Place
-#   this file in the 'files' directory of this module with the .pem extension.
-#
 # === Examples
 #
 #  class { 'rhnsatellite':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
+#    server_url => 'https://rhn.your.org/XMLRPC',
+#    username   => 'bob',
+#    password   => 'secret',
+#  }
+#
+#  # Later
+#  rhnsatellite::channel { 'rhel-x86_64-server-optional-7':
+#    ensure => present,
 #  }
 #
 # === Authors
 #
 # Andy Sykes <andy@tinycat.co.uk>
+# Thomas Equeter
 #
 # === Copyright
 #
@@ -38,14 +43,4 @@ class rhnsatellite(
   $username,
   $password
 ) {
-
-  # Passing parameters as resource defaults in dynamic scope may stop working
-  # in a future Puppet release. For now it's still better than writing the
-  # password in a file.
-  Satelliterepo {
-    server_url => $server_url,
-    username   => $username,
-    password   => $password,
-  }
-
 }

@@ -21,25 +21,30 @@ documentation. I figured out how to use the API by reading the source for
 `spacewalk-channel`; it's all Python, after all.
 
 The module requires an org admin username and password. It needs this so it can
-change the subscriptions on machines inside your Satellite org. It writes a file
-at /etc/puppet/rhn.conf with this information, which the provider uses on
-subsequent invocations.
+change the subscriptions on machines inside your Satellite org. They are specified
+in the `rhnsatellite` class parameters and reused in `rhnsatellite::channel`.
 
-I did it like this so you could use the `satelliterepo` type very similarly to
-the `yumrepo` type; otherwise you'd have had to specify the admin username and
-password all over your manifests.
+I did it like this so you could use the `rhnsatellite::channel` type very
+similarly to the `yumrepo` type; otherwise you'd have had to specify the admin
+username and password all over your manifests.
 
 Example
 -------
 
 Simply include the module into your manifest:
 
-  class {'rhnsatellite':
-    server_url => 'https://your.server.here/XMLRPC',
-    username   => 'bob',
-    password   => 'bob'
-  }
+```puppet
+class {'rhnsatellite':
+  server_url => 'https://your.server.here/XMLRPC',
+  username   => 'bob',
+  password   => 'bob'
+}
+```
 
 Now you can subscribe to channels anywhere in that machine's manifest by doing:
 
-  satelliterepo {'some-rhn-channel-label': }
+```puppet
+rhnsatellite::channel { 'rhel-x86_64-server-optional-7':
+  ensure => present,
+}
+```

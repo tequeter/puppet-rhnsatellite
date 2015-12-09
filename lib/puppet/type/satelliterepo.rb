@@ -1,7 +1,9 @@
 # This is a custom Puppet type for managing repos provided by RHN Satellite.
 
 Puppet::Type.newtype(:satelliterepo) do
-  @doc = "Manage a repo provided by RHN Satellite."
+  @doc = "Manage a repo provided by RHN Satellite. In most cases, the " +
+    "rhnsatellite class and rhnsatellite::channel type will more convenient " +
+    "to use than calling this type directly."
 
   ensurable
 
